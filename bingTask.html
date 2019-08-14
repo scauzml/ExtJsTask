@@ -1,0 +1,123 @@
+<html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./ext-3.3.0/resources/css/ext-all.css" />
+    <script type="text/javascript" src="./ext-3.3.0/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="./ext-3.3.0/ext-all.js"></script>
+    <style>
+        html {
+            height: 100%;
+            background-image: url('./bingLogo.jpg');
+
+        }
+    </style>
+    <script>
+        Ext.onReady(function () {
+            var searchBox1 = new Ext.BoxComponent({
+
+                xtype: 'box',
+                id: 'searchbox1',
+                height: 50,
+                autoEl: {
+                    tag: 'img',
+                    src: './searchIcon.png'
+                }
+            })
+            var searchContainer = new Ext.Container({
+                layout: {
+                    type: 'hbox',
+                    align: 'center'
+                },
+                items: [{
+                    xtype: 'field',
+                    width: 525,
+                    height: 50,
+                    style: 'border:none;background-color:withe'
+
+                }, searchBox1, ]
+            })
+            var searchBox = new Ext.BoxComponent({
+
+                xtype: 'box',
+                id: 'searchbox',
+                height: 50,
+                autoEl: {
+                    tag: 'img',
+                    src: './searchIcon.png'
+                }
+            })
+            var searchContainer1 = new Ext.Container({
+                layout: {
+                    type: 'hbox',
+                    align: 'center'
+                },
+                items: [{
+                    xtype: 'field',
+                    width: 525,
+                    height: 50,
+                    style: 'border:none;background-color:withe'
+
+                }, searchBox, ]
+            })
+           
+            var tabPanel = new Ext.TabPanel({
+                height: 80,
+                width: 600,
+                plain: true,
+                style: 'margin:0 0 0 160',
+                activeTab: 0,
+            });
+            tabPanel.add({
+                title: '国内版',
+                items: [
+                    searchContainer
+                ]
+            });
+            tabPanel.add({
+                title: '国际版',
+                items: [
+                    searchContainer1
+                ]
+            });
+
+            var container = new Ext.Container({
+                renderTo: Ext.getBody(),
+                layout: 'hbox',
+                id: 'container',
+                style: 'margin: 100 0 0 100',
+                items: [{
+                        xtype: 'box',
+                        height: 50,
+                        style: 'margin-top:33px;',
+                        autoEl: {
+                            tag: 'img',
+                            src: './bing.png'
+                        }
+                    },
+                    tabPanel
+                ]
+            })
+            container.render();
+
+            Ext.getCmp("searchbox").on("click", function () {
+                Ext.Msg.alert("search", "search success");
+            })
+            Ext.getCmp("searchbox1").on("click", function () {
+                Ext.Msg.alert("search", "search success");
+            })
+            Ext.get('ext-gen13').remove();
+            
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
